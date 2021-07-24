@@ -1,0 +1,52 @@
+COMANDOS SQL NO SQL SERVER
+
+1° criar base de dados (CREATE DATABASE nome_bd)
+
+2° acessar base de dados (USE nome_bd)
+
+3° criar tabela (CREATE TABLE nome_table(
+			atributo1,
+			atributo2,
+			atributo3
+		))
+
+4° apagar tabela (DROP TABLE nome_tabela)
+
+5° apagar banco de dados 	(USE master
+				DROP DATABASE nome_db)
+
+6° apagar dados de uma tabela	(DELETE FROM table_name WHERE condition;)
+
+7° mudar dados da tabela	(UPDATE name_table
+				SET colunaMudada = 'valor que será mudado'
+				WHERE colunaCondicional = 'valor condicional';)
+
+8° apresentar dados da tabela (SELECT [* ou nome_coluna(s)] FROM nome_tabela)
+
+9° inserção de dados 	(INSERT INTO nome_tabela(
+					atributo1,
+					atributo2,
+					atributo3
+				) VALUES(
+					dado1,
+					dado2,
+					dado3
+				))
+
+10° selecionar uma ou mais tabelas de acordo com parâmetros específicados(
+	SELECT * FROM tabela_1 INNER JOIN tabela_2 ON tabela_1.coluna=tabela_1.coluna
+OBS: retorna valor somente se houver ocorrência em ambas
+)
+
+11° dar um nome alternativo para a tabela(com o exemplo anterior)(aliases)(
+	SELECT * FROM tabela_1 AS L INNER JOIN tabela_2 AS E ON L.coluna=E.coluna
+)
+
+12° INNER JOIN com + de 2 tabelas(
+
+SELECT t_cliente.nm_cliente,nr_cpf, t_endereco.ds_endereco, t_telefone.nr_telefone
+FROM t_cliente INNER JOIN t_endereco
+	ON t_cliente.cd_cliente=t_endereco.t_cliente_cd_cliente
+INNER JOIN t_telefone
+	ON t_cliente.cd_cliente=t_telefone.t_cliente_cd_cliente
+)

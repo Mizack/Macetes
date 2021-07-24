@@ -1,0 +1,48 @@
+ISSO É INTERESSANTE USAR NO JUPYTER
+
+1° conectar o python com o SQL SERVER(
+	import pyodbc 
+	server = 'CAMINHO_SERVIDOR' 
+	database = 'NOME_DATABASE' 
+	cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';Trusted_Connection=yes;')
+	cursor = cnxn.cursor()
+)
+
+2° fazer leitura dos dados da database(
+- MODO 1:
+	cursor.execute('SELECT * FROM NOME_TABELA')
+	linha = cursor.fetchone()# fetchall tbm serve
+	print(linha)
+- MODO 2:
+	cursor.execute('SELECT * FROM NOME_TABELA')
+	linha = cursor.fetchall()
+	for inseto in linha:
+		print(f"Código: {inseto[0]}\nNome: {inseto[1]}\nIdade: {inseto[2]}\n")
+)
+
+3° adicionar dados na tabela(
+- MODO 1:
+	cursor.execute("INSERT INTO T_PESSOAS VALUES (2,'Jubileu',12)")
+	cursor.commit()
+- MODO 2:
+	def listPessoas(codigo,nome,idade):
+		lista = (codigo,nome,idade)
+		return [lista]
+	codigo = int(input('código'))
+	nome = str(input("nome"))
+	idade = int(input('idade'))
+	dadosLista = listPessoas(codigo,nome,idade)
+	cursor.executemany("INSERT INTO T_PESSOAS (cd_pessoa,nome_Pessoa,idade) VALUES (?,?,?)",dadosLista)
+	cursor.commit()
+)
+
+4° alterar dados de uma tabela [NUNCA ESQUECER DO WHERE] (
+# alterar a idade da pessoa em que o código da pessoa seja 1
+cursor.execute("UPDATE T_PESSOAS SET idade = 17 WHERE cd_pessoa = 1")
+cursor.commit()
+)
+
+5°deletar dados de uma tabela [NUNCA ESQUECER DO WHERE] (
+cursor.execute("DELETE FROM T_PESSOAS WHERE cd_pessoa = 2")
+cursor.commit()
+)

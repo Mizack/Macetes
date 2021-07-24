@@ -1,0 +1,60 @@
+comandos com o git
+
+1º criar o diretório e o arquivo (pasta: mkdir <nome_diretorio> / arquivo: dir><nome_arquivo.ext>);
+
+2º adicionar o diretório ao git (git init);
+
+3º adicionar o arquivo ao versionamento (git add <nome_arquivo.ext || .(o ponto adiciona todos os arquivos de uma só vez));
+
+4º ver se os arquivos foram adicionados (git status);
+
+5º salvar os arquivos modificados como um versionamento (git commit -m "qualquer mensagem");
+
+6º visualizar as alterações que foram realizadas naquele versionamento (git diff)
+
+7º visualizar quais pessoas fizeram alterações no projeto juntamente com a mensagem do commit (git log);
+
+8° mostrar determinados pontos na história (git show(para mostrar o ultimo commit) git show 686cf1a8a1aea6b93f783943a3ab46141c09d9bb(nº q é dado no commit))
+
+9° criar uma ramificação do projeto (git branch <nome> | git branch(mostra quais branchs foram criadas))
+
+10° acessar a ramificação (git checkout <nome_da_branch>)
+
+11° juntar a ramificação ao projeto raiz (git merge <nome_da_branch>)
+
+12° excluir ramificação (git branch -D <nome_da_branch>)
+
+13° adicionar a um repositório remoto (git remote add origin https://github.com/Mizack/aula-git.git)
+
+14° verificar quais repositorios remotos existem (git remote -v)
+
+14° apagar repositorio remoto (git remote rm origin)
+
+15º "empurrar" o repositório local para o remoto (git push)(quando for a primeira vez tem que ser -> (git push -u origin master))
+
+16° clonar um repositório já existente (git clone <link>)
+
+17° criar uma branch nova e ja acessar (git checkout -b <nome_da_branch>)
+
+18° atualizar o commit (git commit -am "mensagem")
+
+19° puxa o repositorio da nuvem (git pull)
+
+20° recuperar um ponto na historia de um arquivo (git checkout <n° commit> -- <nome_arquivo>)
+
+21° recuperar um arquivo deletado (git checkout <n° commit(opcional)> -- <nome_arquivo>)
+
+22° retirar um arquivo do add (git reset <nome_arquivo>)
+
+23º voltar ao estado inicial do commit e desfazer alterações feitas (git reset --hard HEAD~0)
+
+24° reverter um commit (git revert HEAD~0(quantos eu quiser voltar))
+
+25° criar tags para substituir os hashs (git tag nome_tag) 
+
+26° para mostrar tags existentes no projeto (git tag)
+
+27° ignorar arquivos no repositório
+	criar um arquivo de despejo .gitignore e escrever nome de pastas e diretórios que devem ser ignorados (gitignore.io)
+
+28° forçar o arquivo a subir pro repositório (git push origin HEAD --force-with-lease)
