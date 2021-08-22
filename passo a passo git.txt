@@ -58,3 +58,5 @@ comandos com o git
 	criar um arquivo de despejo .gitignore e escrever nome de pastas e diretórios que devem ser ignorados (gitignore.io)
 
 28° forçar o arquivo a subir pro repositório (git push origin HEAD --force-with-lease)
+
+29º quando arquivos forem mudados de repositório (git add nomeArq diretorio/)
