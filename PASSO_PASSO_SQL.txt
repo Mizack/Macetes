@@ -50,3 +50,8 @@ FROM t_cliente INNER JOIN t_endereco
 INNER JOIN t_telefone
 	ON t_cliente.cd_cliente=t_telefone.t_cliente_cd_cliente
 )
+
+13º - criar uma chave estrangeira:
+ALTER TABLE tabela_recebedora
+    ADD CONSTRAINT nm_da_FK FOREIGN KEY ( col_reservada_fk )
+        REFERENCES tabela_base ( pk_base );
