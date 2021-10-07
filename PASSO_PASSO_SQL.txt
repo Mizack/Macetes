@@ -55,3 +55,68 @@ INNER JOIN t_telefone
 ALTER TABLE tabela_recebedora
     ADD CONSTRAINT nm_da_FK FOREIGN KEY ( col_reservada_fk )
         REFERENCES tabela_base ( pk_base );
+
+14º - adicionar uma coluna em uma tabela já feita:
+ALTER TABLE NOME_TABLE 
+ADD nm_column DATETYPE CONSTRAINT;
+
+15º - adicionar uma constraint a uma tabela:
+ALTER TABLE NOME_TABLE
+ADD CONSTRAINT nome_contraint
+CHECK ( operação lógica );
+
+16º - alterar type ou tamanho:
+ALTER TABLE NOME_TABLE 
+MODIFY column_modificada NOVO_TIPO_DADO NOT NULL;
+
+17º - excluir coluna:
+ALTER TABLE NOME_TABLE 
+DROP COLUMN nm_column;
+
+18º - excluir restrição:
+- ALTER TABLE NOME_TABLE
+	DROP CONSTRAINT nm_constraint CASCADE;
+
+- ALTER TABLE NOME_TABLE
+	DROP CONSTRAINT nm_constraint;
+
+19º - alterar nome tabela:
+ALTER TABLE     T_ANTIGA
+RENAME TO T_NOVA;
+
+20º - renomear coluna:
+ALTER TABLE T_TABELA
+RENAME COLUMN nm_antigo TO nm_novo;
+
+21º - alterar nome constraint:
+ALTER TABLE T_TABELA
+RENAME CONSTRAINT CONSTRAINT_ANTIGA
+TO CONSTRAINT_NOVA;
+
+22º - visualizar constraints existentes:
+-- VISUALIZAR CONSTRAINTS DE TODAS AS TABELAS QUE
+-- TENHA ACESSO
+SELECT TABLE_NAME, CONSTRAINT_NAME,
+       CONSTRAINT_TYPE, SEARCH_CONDITION
+  FROM ALL_CONSTRAINTS;
+  
+ -- DE UMA ESPECIFICA:
+ -- VISUALIZAR CONSTRAINTS DE UMA TABELA ESPECÍFICA
+SELECT TABLE_NAME, CONSTRAINT_NAME,
+       CONSTRAINT_TYPE, SEARCH_CONDITION
+  FROM ALL_CONSTRAINTS
+ WHERE UPPER(TABLE_NAME)= 'T_SIP_FUNCIONARIO';
+ 
+ 23º - excluir tabelas com e sem constraint:
+- DROP TABLE tabela;
+- DROP TABLE tabela CASCADE CONSTRAINTS;
+
+24º - gerar sequencias numericas:
+CREATE SEQUENCE nome_sequencia
+[ START WITH num_inicio ] -- numero inicial
+[ INCREMENT BY  num_incremento ] -- valor que sera incrementado
+[ { MAXVALUE  num_maximo | NOMAXVALUE } ] -- valor maximo
+[ { MINVALUE  num_minimo | NOMINVALUE } ] -- valor minimo
+[ { CYCLE | NOCYCLE} ] -- CYCLE: quando o valor maximo é atingido, ele retorna ao minimo e vice-versa
+[ { CACHE   num_cache | NOCACHE } ] -- numero de valores que serao mantidos na sequencia
+[ { ORDER | NOORDER } ]; --garante que os valores gerados estão em ordem
