@@ -78,9 +78,17 @@
 
 -- GENERATORS E SEQUENCES:
    -- basicamente representam a mesma idéia, porém os generators representam uma nomenclatura específica do Firebird.
+   -- set term !! ;
    -- CREATE TRIGGER TESTE_SEQ_AUTO FOR TESTE_SEQ
    -- ACTIVE BEFORE INSERT POSITION 0
    -- AS
    -- BEGIN
    -- if (new.ID is null) then
    -- NEW.ID = gen_id(vll,1);
+   -- END!!
+   -- set term ; !!
+
+-- VIEW
+   -- são telas geradas a partir da junção e leitura de determinadas tabelas:
+   --    VIEW nome_view(campo1,campo2,campoN) as 
+   -- select dado1,dado2,dadoN from tabela;
