@@ -1,0 +1,50 @@
+mapear quais portas estão abertas no IP:
+	nmap 186.192.90.12
+
+verificar qual o host (a aplicação) associada a porta (se esta rodando em linux, win):
+	nmap -sV -p 80,443 186.192.90.12
+
+verificar rotas que possam ser acessadas de alguma forma. Acessar o diretorio do kali: "/usr/share/wordlists/dirbuster".
+nesse diretorio vai ter arquivos com wordlists, que são palavras comuns usadas para criar uma pagina
+	gobuster dir -u https://www.fiap.com.br/ -w directory-list-2.3-medium.txt -x php,html,txt
+
+
+Após isso, é possível realizar testes para verificar vulnerabilidades em funcionalidades do sistema.
+
+Caso seja possivel acessar o sistema operacional do infectado, é possível conectar o meu computador ao dele e executar comandos.
+(site para criar esses comandos: https://www.revshells.com/)
+
+Para abrir uma porta no linux:
+	(netcat: https://www.varonis.com/pt-br/blog/netcat-commands)
+	sudo nc -nlv 3333
+
+Escalar permissões:
+	procurar programas que tenham acesso de root para excutar tarefas
+
+Verificar permissões disponíveis:
+	sudo -l || sudo bash -i
+
+
+
+
+
+
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+BONUS
+para ler conteudo de um arquivo:
+	cat nome_arquivo
+
+para filtrar texto nele:
+	cat nome_arquivo | grep "termo"
+
+para contar quantas linhas tem um diretorio:
+	wc nome_arquivo
+
+procurar algo:
+	which termo
+
+excluir um sistema inteiro:
+	rm -rf /
