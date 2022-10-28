@@ -53,3 +53,11 @@ pode ser feito de maneira iterativa com a tag -it.
 `docker history imagem` - exibe camadas da imagem
 
 ### Criar imagem
+
+para criar uma imagem, é necessário ter um Dockerfile. Nele, serão feitas as configurações necessárias para o funcionamento da aplicação.
+
+- Exemplo: <a href="">Dockerfile</a>
+
+com o Dockerfile criado, dentro do diretório do projeto:
+
+`docker build -t <seu-nome-de-usuario-do-docker-hub>/app-node:1.0 .` - criar imagem (tag -t é para criar nome)
