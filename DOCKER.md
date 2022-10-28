@@ -43,3 +43,13 @@ pode ser feito de maneira iterativa com a tag -it.
 `docker exec container comando` - executa um comando dentro do container
 
 `docker exec -it container comando` - executa um comando de maneira iterativa dentro do container
+
+### Listar imagens
+
+`docker images` & `docker images ls` - listar imagens baixadas no host
+
+`docker inspect imagem` - detalhar imagem
+
+`docker history imagem` - exibe camadas da imagem
+
+### Criar imagem
