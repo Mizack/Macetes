@@ -14,7 +14,7 @@ contar quantas linhas tem um arquivo: `wc nome_arquivo`
 
 editar arquivo: `nano nome_arquivo`
 
-criar um grupo de segurança para um comando: `sudo usermod –aG docker $USER`
+criar um grupo de segurança para um comando: `sudo usermod -aG docker $USER`
 
 <hr>
 
