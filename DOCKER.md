@@ -56,8 +56,16 @@ pode ser feito de maneira iterativa com a tag -it.
 
 para criar uma imagem, é necessário ter um Dockerfile. Nele, serão feitas as configurações necessárias para o funcionamento da aplicação.
 
-- Exemplo: <a href="">Dockerfile</a>
+- Exemplo: <a href="https://github.com/Mizack/Macetes/blob/main/Dockerfile">Dockerfile</a>
 
 com o Dockerfile criado, dentro do diretório do projeto:
 
 `docker build -t <seu-nome-de-usuario-do-docker-hub>/app-node:1.0 .` - criar imagem (tag -t é para criar nome)
+
+### Subir imagem para o docker hub
+
+`docker login -u nome_user` - fazer login
+
+`docker push nome_user/nome_app:1.0` - fazer upload da imagem
+
+`docker tag nome_user/nome_app_antigo:1.0 nome_user/nome_app:1.0` - mudar nome da imagem
