@@ -69,3 +69,7 @@ com o Dockerfile criado, dentro do diretório do projeto:
 `docker push nome_user/nome_app:1.0` - fazer upload da imagem
 
 `docker tag nome_user/nome_app_antigo:1.0 nome_user/nome_app:1.0` - mudar nome da imagem
+
+### Excluir imagem
+
+`docker rmi imagem`
