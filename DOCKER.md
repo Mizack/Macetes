@@ -73,3 +73,27 @@ com o Dockerfile criado, dentro do diretório do projeto:
 ### Excluir imagem
 
 `docker rmi imagem`
+
+### Persistência de dados
+
+##### BIND - utiliza um diretório do host para persistir os dados
+
+`docker run –it –v /diretorio/no/host:/pasta/container container comando` - BIND
+
+`docker run –it --mount type=bind,source=/diretorio/no/host,target=/pasta/container container comando` - BIND
+
+##### VOLUME - um espaço de memória gerenciado pelo Docker
+
+`docker volume` && `docker volume ls` - listar volumes do docker
+
+`docker volume create nome-volume` - criar volume
+
+`docker run –it –v nome-volume:/pasta/container container comando` - VOLUME
+
+`docker run -it --mount source=nome-volume, target=/pasta/container container comando` - VOLUME
+
+##### TMPFS - o dado da persistencia só existe enquanto o container está em funcionamento
+
+`docker run -it --tmpfs=/pasta/container container comando` - TMPFS
+
+`docker run –it --mount type=tmpfs,destination=/pasta/container container comando` - TMPFS
