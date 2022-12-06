@@ -6,6 +6,8 @@ O docker run verifica se a imagem já existe, se não, vai no docker hub e baixa
 
 `docker run container` - executar um container
 
+`docker run container --name nome_container` - executar um container e dar um nome a ele
+
 `docker run container comando` - executar um container e executar um comando
 
 `docker run -d container` - executar um container sem travar o terminal
@@ -19,6 +21,8 @@ O docker run verifica se a imagem já existe, se não, vai no docker hub e baixa
 `docker ps` & `docker container ls` - lista os containers que estão rodando naquele momento
 
 `docker ps -a` & `docker container ls -a` - lista todos os containers que já foram executados naquele host
+
+`docker inspect` - detalhar container
 
 ### Estados do container
 
@@ -97,3 +101,16 @@ com o Dockerfile criado, dentro do diretório do projeto:
 `docker run -it --tmpfs=/pasta/container container comando` - TMPFS
 
 `docker run –it --mount type=tmpfs,destination=/pasta/container container comando` - TMPFS
+
+### Redes
+
+A rede host remove o isolamento entre o container e o sistema, enquanto a rede none remove a interface de rede.
+
+`docker network ls` - listar redes disponíveis
+
+`docker network create --driver bridge minha-bridge` - criar uma rede nova
+
+`docker run -d --name nome-container --network minha-bridge container comando` - rodar container usando rede criada
+
+### Compose
+
