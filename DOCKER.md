@@ -119,3 +119,7 @@ Ele é responsável por organizar os containers de modo que todos sejam executad
 - Exemplo: <a href="https://github.com/Mizack/Macetes/blob/main/docker-compose.yml">docker-compose.yml</a>
 
 `docker-compose up -d` - executa o passo a passo descrito no docker-compose.yml
+
+`docker-compose ps` - lista quais "composes" estão rodando
+
+`docker-compose down` - matar a execução do compose
