@@ -114,3 +114,8 @@ A rede host remove o isolamento entre o container e o sistema, enquanto a rede n
 
 ### Compose
 
+Ele é responsável por organizar os containers de modo que todos sejam executados simultâneamente
+
+- Exemplo: <a href="https://github.com/Mizack/Macetes/blob/main/docker-compose.yml">docker-compose.yml</a>
+
+`docker-compose up -d` - executa o passo a passo descrito no docker-compose.yml
