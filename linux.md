@@ -29,3 +29,27 @@ criar um grupo de segurança para um comando: `sudo usermod -aG docker $USER`
   iniciar xampp via terminal: sudo /opt/lampp/lampp start
   
   iniciar xampp via interface: sudo /opt/lampp/manager-linux-x64.run
+
+<hr>
+
+#### MYSQL
+  
+  ##### install
+
+  sudo apt update
+  
+  sudo apt install mysql-server
+  
+  sudo systemctl start mysql.service
+  
+  ### config
+  
+  sudo mysql
+  
+  ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+  
+  exit
+  
+  mysql -u root -p
+  
+  ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;
