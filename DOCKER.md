@@ -24,6 +24,8 @@ O docker run verifica se a imagem já existe, se não, vai no docker hub e baixa
 
 `docker inspect` - detalhar container
 
+`docker info` - listar informações do docker naquela máquina
+
 ### Estados do container
 
 essas ações podem ser feitas pelo ID do container
@@ -123,3 +125,21 @@ Ele é responsável por organizar os containers de modo que todos sejam executad
 `docker-compose ps` - lista quais "composes" estão rodando
 
 `docker-compose down` - matar a execução do compose
+
+### Docker Machine
+
+`docker-machine ls` - listar vms rodando
+
+`docker-machine create -d driver nome-virtual` - criar uma máquina virtual. Adicionar `--virtualbox-no-vtx-check` antes do nome da vm
+
+`docker-machine start nome-virtual` - inicia uma virtual
+
+`docker-machine ssh nome-virtual` - acessar virtual via SSH
+
+### Swarm
+
+`docker swarm init --advertise-addr ip-vm` - iniciar o swarm. A máquina em que esse comando for executado, será a gerenciadora dos outros participantes do cluster
+
+`docker swarm join --token token-manager ip-manager` - adicionar um worker ao swarm
+
+`docker swarm join-token worker` - retorna o comando com o token do manager para adicionar novos workers
