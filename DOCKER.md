@@ -143,3 +143,63 @@ Ele é responsável por organizar os containers de modo que todos sejam executad
 `docker swarm join --token token-manager ip-manager` - adicionar um worker ao swarm
 
 `docker swarm join-token worker` - retorna o comando com o token do manager para adicionar novos workers
+
+`docker node ls` - listar workers do cluster. Isso só pode ser executado em um manager
+
+`docker node ls --format "{{.Coluna1}} {{.Coluna2}}"` - filtrar colunas que serão mostradas
+
+- Remover um worker do swarm
+
+  `docker swarm leave` - dentro do worker
+
+  `docker node rm id-worker` - dentro do manager
+
+`docker node inspect worker` - detalha um worker
+
+`docker service create -p host:vm imagem` - inicia um serviço
+
+`docker service ls` - lista os servicos que estão sendo executados
+
+`docker service ps id-vm` - lista detalhes do serviço
+
+* Routing mesh - faz o redirecionamento de serviços dentro de um swarm. Permite acessar um serviço que é executado em um nó a partir de qualquer IP que esteja associado ao swarm
+
+* Quando um manager cai, os servicos continuam rodando nos outros "nós" do swarm. A partir dessa queda, não é mais possível gerenciar o estado do swarm a nao ser que tenha backup.
+
+* Criar um backup do swarm:
+  
+  `cp -r /var/lib/docker/swarm/ pasta-backup` - copiar conteúdo da pasta do swarm para uma pasta de backup
+  
+  `cp -r pasta-backup/* /var/lib/docker/swarm/` - copiar backup para a pasta do swarm
+  
+  `docker swarm init --force-new-cluster --advertise-addr ip-vm` - recriar o swarm
+  
+* Criar novos managers:
+  
+  `docker swarm join-token manager` - descobrir qual o hash para associar um manager (dentro do atual manager)
+
+  `docker swarm join --token token-manager ip-manager` - tornar um novo manager (dentro do novo manager)
+  
+Quando o manager cai, a responsabilidade é reatribuida a outro manager "Reachable". Caso tenha mais de um nesse status, é aplicado o algoritmo RAFT:
+
+  * SUPORTA: (N-1)/2 Falhas
+
+  * MINÍMO: (N/2)+1 Quórum
+
+  <i>N = nº Managers</i>
+  
+ * Remover um manager do cluster:
+
+  `docker node demote nome-vm` - rebaixar a VM de manager para worker
+  
+  `docker node rm nome-vm` - remover a VM do cluster
+  
+`docker node update --availability drain nome-vm-manager` - evitar que manager execute serviços
+
+`docker service update --constraint-add node.role==worker id-servico` - informa ao serviço que ele só pode ser executado em um "nó" worker
+
+`docker service update --replicas N id-servico` - informa quantas replicas desse serviço existirão (N = nº de réplicas). Caso haja um nº maior de réplicas do que máquinas, algumas máquinas terão mais de 1 serviço.
+
+`docker service scale id-servico=N` - outra forma de chegar ao resultado do comando acima
+
+`docker service create -p host:vm --mode global imagem` - cria um serviço de maneira global, ou seja, todos os "nós" do cluster terão esse serviço rodando. Isso serve para executar serviços que obrigatoriamente devem rodar, como serviços de análise de segurança.
