@@ -16,6 +16,10 @@ editar arquivo: `nano nome_arquivo`
 
 criar um grupo de segurança para um comando: `sudo usermod -aG docker $USER`
 
+verificar se existe um serviço sendo executado em determinada porta: `sudo lsof -i :porta`
+
+matar o serviço: `sudo kill ID_SERVICO`
+
 <hr>
 
 #### XAMPP
