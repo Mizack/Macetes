@@ -62,3 +62,5 @@ comandos com o git
 29º quando arquivos forem mudados de repositório (git add nomeArq diretorio/)
 
 30º descartar alterações de um repositório não commitado (git checkout -- .)
+
+31º remover todas as branches locais com exceção da master: (git branch | grep -v "master" | xargs git branch -D)
