@@ -50,6 +50,8 @@ pode ser feito de maneira iterativa com a tag -it.
 
 `docker exec -it container comando` - executa um comando de maneira iterativa dentro do container
 
+`docker exec -it container sh` - acessar terminal do container
+
 ### Listar imagens
 
 `docker images` & `docker images ls` - listar imagens baixadas no host
